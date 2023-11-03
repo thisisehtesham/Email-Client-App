@@ -6,8 +6,8 @@ const initialState = {
     listLoadingError: false,
     emailList: [],
     favorites: [],
-    read: []
-}
+    read: [],
+};
 
 export const fetchEmailList = createAsyncThunk(
     "emailList/fetchEmailList",
@@ -18,7 +18,7 @@ export const fetchEmailList = createAsyncThunk(
 );
 
 const emailListDataSlice = createSlice({
-    name: 'emailList',
+    name: "emailList",
     initialState,
     reducers: {
         addToFavorites: (state, action) => {
@@ -26,17 +26,19 @@ const emailListDataSlice = createSlice({
         },
 
         removeFromFavorites: (state, action) => {
-            state.favorites = state.favorites.filter((item) => item !== action.payload);
+            state.favorites = state.favorites.filter(
+                (item) => item !== action.payload
+            );
         },
 
         addToRead: (state, action) => {
             state.read = [...state.read, action.payload];
-        }
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchEmailList.pending, (state) => {
             state.listLoading = true;
-            state.listLoadingError = false
+            state.listLoadingError = false;
         });
 
         builder.addCase(fetchEmailList.fulfilled, (state, action) => {
@@ -51,8 +53,9 @@ const emailListDataSlice = createSlice({
             state.emailList = [];
             console.log("REDUX___Error_occured_while_fetching_email_list");
         });
-    }
+    },
 });
 
-export const { addToFavorites, removeFromFavorites, addToRead } = emailListDataSlice.actions;
+export const { addToFavorites, removeFromFavorites, addToRead } =
+    emailListDataSlice.actions;
 export default emailListDataSlice.reducer;

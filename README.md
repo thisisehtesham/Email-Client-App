@@ -1,7 +1,7 @@
 # Email-client-app
 
 - A email client app created using ReactJs, Redux-toolkit, CSS3.
-- Link to live demo - https://email-app-project.netlify.app/
+- Link to live demo - https://email-client-app-thisisehtesham.vercel.app/
 
 --- 
 
